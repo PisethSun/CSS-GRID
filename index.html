@@ -74,6 +74,39 @@ footer {
 }
      -->
 
+
+
+
+     <!-- /*
+Challenge:
+    1. Make our layout look like the screenshot. 
+    (📝 Try to write the least CSS possible.)  
+*/
+    main {
+        grid-template-columns: 1fr 1fr;
+    } 
+    .technology {
+        grid-column: span 2;
+    }
+    .nasa {
+        grid-row: span 2;
+    }
+    .health {
+        grid-column: span 2;
+    }  
+
+    You are telling the <main> element (which must be using display: grid) to create two equal-width columns.
+
+grid-template-columns defines how many columns the grid has and how wide they are.
+
+1fr 1fr means:
+
+1 fraction unit
+
+1 fraction unit
+→ So the space is split into two equal parts.
+} -->
+
     </main>
         
 </body>
