@@ -1,133 +1,303 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS-GRID</title>
+    <title>CSS Grid Notes</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            margin: 0;
+            background-color: #f5f5f7;
+            color: #222;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4f46e5, #06b6d4);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem 2rem;
+        }
+
+        section {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 6px 12px rgba(15, 23, 42, 0.06);
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: #1f2933;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        ul {
+            padding-left: 1.25rem;
+        }
+
+        li {
+            margin-bottom: 0.25rem;
+        }
+
+        .code-block {
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin: 0.75rem 0 1rem;
+            font-family: "Fira Code", Consolas, Monaco, Menlo, monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            white-space: pre;
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: #4b5563;
+            background: #f9fafb;
+            border-left: 3px solid #4f46e5;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .grid-demo-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 4px;
+            margin-top: 0.5rem;
+        }
+
+        .grid-demo div {
+            background: #4f46e5;
+            color: white;
+            text-align: center;
+            padding: 0.35rem 0;
+            font-size: 0.75rem;
+            border-radius: 4px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e5e7eb;
+            margin: 1.5rem 0;
+        }
+    </style>
 </head>
 <body>
     <header>
-        
-        <h1>Note</h1>
-
-
+        <h1>CSS Grid – Study Notes</h1>
     </header>
 
     <main>
+        <!-- FR UNIT -->
+        <section>
+            <h2>1. The <code>fr</code> Unit</h2>
+            <p>
+                <strong>fr</strong> stands for <strong>fraction</strong>.  
+                It represents a fraction of the <strong>available space</strong> in a grid container.
+            </p>
+            <p>
+                When you set <code>1fr</code> on all columns, it means all columns share the space equally.
+                This makes your layout naturally <strong>responsive</strong>: as the container gets smaller,
+                the columns shrink with it.
+            </p>
 
-        <h2>Fr</h2>
-        <p>Fr -Stand for fraction - and the fr unit represents a fraction of the available space in the grid. set the value to 1fr all around mean all available space will share the same fraction.This method has responsiveness buildin , if the container getting smaller and smaller the column evebtually get stretch out. You can applied fr twice in the same column . Ex: 2fr </p>
-
-        <p>/* 
-Challenge:
-    1. Set up the "main" element as a grid container. 
-    2. Specify a template of one column with 1fr width.
-    3. Place 1em of space between each grid item. 
+            <div class="code-block">
+                <code>/* Challenge:
+1. Set up the "main" element as a grid container. 
+2. Specify a template of one column with 1fr width.
+3. Place 1em of space between each grid item.
 */
 
-display: grid;
-grid-template-columns: 1fr;
-gap: 1em;
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+}</code>
+            </div>
 
-</p>
+            <div class="note">
+                You can also use values like <code>2fr</code>, <code>3fr</code>, etc.  
+                For example, <code>2fr 1fr</code> means the first column gets twice as much space as the second.
+            </div>
+        </section>
 
+        <!-- ALIGN & JUSTIFY -->
+        <section>
+            <h2>2. Rows, Alignment & Explicit Grid</h2>
+            <p>Common alignment properties in CSS Grid:</p>
+            <ul>
+                <li><code>justify-items</code></li>
+                <li><code>align-items</code></li>
+                <li><code>justify-content</code></li>
+                <li><code>align-content</code></li>
+                <li><code>justify-self</code></li>
+                <li><code>align-self</code></li>
+            </ul>
+        </section>
 
-<hr>
+        <!-- CHALLENGE EXAMPLE 1 -->
+        <section>
+            <h2>3. Example Layout with <code>grid-row</code> and <code>grid-column</code></h2>
 
-<h2>ROW and Explicit Grid</h2>
-<p>Align and Justify</p>
-<p>Many propterty : 
-    <li>Justify-items</li>
-    <li>align-items</li>
-    <li>Justify-content</li>
-    <li>align-content</li>
-    <li>Justify-self</li>
-    <li>align-self</li>
+            <p>Example using <code>header</code>, <code>nav</code>, <code>main</code> and <code>footer</code>:</p>
 
-</p>
+            <div class="code-block">
+                <code>/* Layout challenge example */
 
-<hr>
-
-
-
-<h1>Challenge: 1 </h1>
-
-<!-- header {
+header {
     background-color: palegoldenrod;
-    grid-column: span 3 ;
- 
-    
+    grid-column: span 3;
 }
+
 nav {
     background-color: lightcoral;
     grid-column: span 1;
-    grid-row:  span 3;
-    
+    grid-row: span 3;
 }
+
 main {
     background-color: lightgreen;
-   grid-row:  span 3;
-    grid-column: span 2  ;
+    grid-row: span 3;
+    grid-column: span 2;
 }
+
 footer {
     background-color: gold;
-    grid-column:   span 3;
-}
-     -->
+    grid-column: span 3;
+}</code>
+            </div>
 
+            <hr>
 
+            <p>Another challenge example:</p>
 
+            <div class="code-block">
+                <code>/* Make the layout match the design */
 
-     <!-- /*
-Challenge:
-    1. Make our layout look like the screenshot. 
-    (📝 Try to write the least CSS possible.)  
-*/
-    main {
-        grid-template-columns: 1fr 1fr;
-    } 
-    .technology {
-        grid-column: span 2;
-    }
-    .nasa {
-        grid-row: span 2;
-    }
-    .health {
-        grid-column: span 2;
-    }  
-
-    You are telling the <main> element (which must be using display: grid) to create two equal-width columns.
-
-grid-template-columns defines how many columns the grid has and how wide they are.
-
-1fr 1fr means:
-
-1 fraction unit
-
-1 fraction unit
-→ So the space is split into two equal parts.
-} -->
-
-
-<h1>Repeat Function</h1>
-<p>
-
-    <li>.grid-container {
+main {
     display: grid;
-    gap: .5em;
-    grid-template-columns: repeat(8, 1fr); // repeat 8  class="uk-text-left-@s" 
+    grid-template-columns: 1fr 1fr;
+}
+
+.technology {
+    grid-column: span 2;
+}
+
+.nasa {
+    grid-row: span 2;
+}
+
+.health {
+    grid-column: span 2;
+}</code>
+            </div>
+
+            <div class="note">
+                <code>grid-template-columns: 1fr 1fr;</code>  
+                tells the <code>&lt;main&gt;</code> element (with <code>display: grid</code>) to create two equal-width columns.
+            </div>
+        </section>
+
+        <!-- REPEAT FUNCTION -->
+        <section>
+            <h2>4. The <code>repeat()</code> Function</h2>
+
+            <p><strong>Basic usage:</strong></p>
+            <div class="code-block">
+                <code>.grid-container {
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: repeat(8, 1fr);
     /* repeat(how many times, what to repeat) */
     border: 2px solid black;
-}</li>
-<li>   grid-template-columns: repeat(7, 1fr) auto; </li>
-</p>
-<p>
-.grid-container {
-    display: grid;
-    grid-template: repeat(5, 1fr) / repeat(12, 1fr); // creating template with grid row and column
-}
+}</code>
+            </div>
 
-</p>
+            <p>You can also mix <code>repeat()</code> with other values:</p>
+
+            <div class="code-block">
+                <code>grid-template-columns: repeat(7, 1fr) auto;</code>
+            </div>
+
+            <p>Defining both rows and columns with <code>grid-template</code> shorthand:</p>
+
+            <div class="code-block">
+                <code>.grid-container {
+    display: grid;
+    /* 5 equal rows, 12 equal columns */
+    grid-template: repeat(5, 1fr) / repeat(12, 1fr);
+}</code>
+            </div>
+        </section>
+
+        <!-- REPEAT(12, 1FR) EXPLANATION + DEMO -->
+        <section>
+            <h2>5. Explanation: <code>grid-template-columns: repeat(12, 1fr);</code></h2>
+
+            <p>This line creates a <strong>12-column grid</strong> with equal-width columns.</p>
+
+            <ul>
+                <li><code>repeat(12, ...)</code> → make <strong>12 columns</strong></li>
+                <li><code>1fr</code> → each column takes <strong>1 fraction</strong> of the available space</li>
+                <li>Because all columns use <code>1fr</code>, each column has <strong>equal width</strong>.</li>
+            </ul>
+
+            <p>Visual demo (12 equal columns):</p>
+            <div class="grid-demo">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+                <div>10</div>
+                <div>11</div>
+                <div>12</div>
+            </div>
+
+            <div class="code-block">
+                <code>.twelve-col-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0.5rem;
+}</code>
+            </div>
+
+            <div class="note">
+                This kind of 12-column grid is very common in modern layouts.  
+                You can then place items like: <code>grid-column: span 3;</code> (3 columns wide),  
+                <code>grid-column: span 6;</code> (half the grid), etc.
+            </div>
+        </section>
     </main>
-        
 </body>
 </html>
