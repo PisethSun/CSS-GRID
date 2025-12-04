@@ -43,6 +43,12 @@
             color: #1f2933;
         }
 
+        h3 {
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #111827;
+        }
+
         p {
             line-height: 1.5;
         }
@@ -118,44 +124,152 @@
                 "nav  nav  main main main main main main main aside aside aside"
                 "foot foot foot foot foot foot foot foot foot foot foot foot";
             margin-top: 1rem;
-            height: 320px;          /* gives it a nice tall layout */
+            height: 320px;
             border-radius: 0.5rem;
             overflow: hidden;
         }
 
-        /* Apply colors to each grid-area */
         .head {
             grid-area: head;
-            background-color: #f5ecb3;   /* Light yellow */
+            background-color: #f5ecb3;
         }
 
         .nav {
             grid-area: nav;
-            background-color: #f4a5a5;   /* Light red/pink */
+            background-color: #f4a5a5;
         }
 
         .main {
             grid-area: main;
-            background-color: #a6f3a6;   /* Light green */
+            background-color: #a6f3a6;
         }
 
         .aside {
             grid-area: aside;
-            background-color: #d8d8d8;   /* Light gray */
+            background-color: #d8d8d8;
         }
 
         .foot {
             grid-area: foot;
-            background-color: #ffe447;   /* Bright yellow */
+            background-color: #ffe447;
         }
 
-        /* Center text inside the grid areas (like the Scrimba example) */
         .grid-container > div {
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
             color: black;
+        }
+
+        /* ========= DEMO GRIDS FOR EACH CONCEPT ========= */
+
+        .demo-grid {
+            display: grid;
+            gap: 0.5rem;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .demo-cell {
+            background: #e5e7eb;
+            border-radius: 0.35rem;
+            padding: 0.4rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .demo-cols {
+            grid-template-columns: 80px 1fr 2fr;
+        }
+
+        .demo-rows {
+            grid-template-columns: 1fr;
+            grid-template-rows: 40px 80px 40px;
+        }
+
+        .demo-span {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .demo-span .wide {
+            grid-column: span 2;
+            background: #bfdbfe;
+        }
+
+        .demo-grid-column {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .demo-grid-column .placed {
+            grid-column: 2 / 4;
+            background: #fecaca;
+        }
+
+        .demo-grid-row {
+            grid-template-columns: 1fr 1fr;
+            grid-auto-rows: 40px;
+        }
+        .demo-grid-row .tall {
+            grid-row: 1 / 3;
+            background: #bbf7d0;
+        }
+
+        .demo-auto-rows {
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 40px;
+        }
+
+        .demo-auto-rows .taller {
+            height: 80px;
+            background: #fde68a;
+        }
+
+        .demo-autofit {
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+        }
+
+        .demo-flow-row {
+            grid-auto-flow: row;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .demo-flow-column {
+            grid-auto-flow: column;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .demo-flow-dense {
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-flow: row dense;
+        }
+        .demo-flow-dense .span2 {
+            grid-column: span 2;
+            background: #bfdbfe;
+        }
+
+        .demo-repeat {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .demo-minmax {
+            grid-template-columns: minmax(120px, 2fr) 1fr;
+        }
+
+        .demo-fr {
+            grid-template-columns: 1fr 2fr 3fr;
+        }
+
+        .demo-gap {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #eef2ff;
+            color: #3730a3;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 999px;
+            margin-left: 0.25rem;
         }
     </style>
 </head>
@@ -165,7 +279,7 @@
     </header>
 
     <main>
-        <!-- FR UNIT -->
+        <!-- 1. FR UNIT -->
         <section>
             <h2>1. The <code>fr</code> Unit</h2>
             <p>
@@ -198,7 +312,7 @@ main {
             </div>
         </section>
 
-        <!-- ALIGN & JUSTIFY -->
+        <!-- 2. ALIGN & JUSTIFY -->
         <section>
             <h2>2. Rows, Alignment & Explicit Grid</h2>
             <p>Common alignment properties in CSS Grid:</p>
@@ -212,7 +326,7 @@ main {
             </ul>
         </section>
 
-        <!-- CHALLENGE EXAMPLE 1 -->
+        <!-- 3. CHALLENGE EXAMPLE 1 -->
         <section>
             <h2>3. Example Layout with <code>grid-row</code> and <code>grid-column</code></h2>
 
@@ -275,7 +389,7 @@ main {
             </div>
         </section>
 
-        <!-- REPEAT FUNCTION -->
+        <!-- 4. REPEAT FUNCTION -->
         <section>
             <h2>4. The <code>repeat()</code> Function</h2>
 
@@ -307,7 +421,7 @@ main {
             </div>
         </section>
 
-        <!-- REPEAT(12, 1FR) EXPLANATION + DEMO -->
+        <!-- 5. REPEAT(12, 1FR) EXPLANATION + DEMO -->
         <section>
             <h2>5. Explanation: <code>grid-template-columns: repeat(12, 1fr);</code></h2>
 
@@ -345,12 +459,11 @@ main {
 
             <div class="note">
                 This kind of 12-column grid is very common in modern layouts.  
-                You can then place items like: <code>grid-column: span 3;</code> (3 columns wide),  
-                <code>grid-column: span 6;</code> (half the grid), etc.
+                You can then place items like: <code>grid-column: span 3;</code> or <code>span 6</code>.
             </div>
         </section>
 
-        <!-- GRID-TEMPLATE-AREAS DEMO -->
+        <!-- 6. GRID-TEMPLATE-AREAS DEMO -->
         <section>
             <h2>6. <code>grid-template-areas</code></h2>
 
@@ -365,7 +478,7 @@ main {
             </div>
         </section>
 
-        <!-- EXTRA NOTES ON GRID-TEMPLATE-AREAS -->
+        <!-- 7. EXTRA NOTES ON GRID-TEMPLATE-AREAS -->
         <section>
             <h2>7. Using <code>grid-template-areas</code> with Cards</h2>
 
@@ -408,27 +521,210 @@ main {
             </div>
         </section>
 
+        <!-- 8. CSS GRID – VISUAL DEMOS -->
+        <section>
+            <h2>8. CSS Grid – Visual Demos (The CSS We Used)</h2>
+            <p>Small visual examples for each key concept.</p>
 
-
-
+            <!-- grid-template-columns -->
+            <h3>grid-template-columns <span class="tag">column sizes</span></h3>
+            <p>Defines how many columns the grid has and how wide they are.</p>
+            <div class="demo-grid demo-cols">
+                <div class="demo-cell">80px</div>
+                <div class="demo-cell">1fr</div>
+                <div class="demo-cell">2fr</div>
+            </div>
             <div class="code-block">
-                <code>.grid-container {
+                <code>.demo-cols {
     display: grid;
-    grid-gap: .5em;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-auto-rows: 75px;
-    grid-auto-flow: dense;
-}
-</code>
+    grid-template-columns: 80px 1fr 2fr;
+}</code>
             </div>
 
-
-                <div class="note">
-                minmax(min,max) , minmax(100px,1fr)
-               Define a size range greater than or equal to min and less than or equal to max 
+            <!-- grid-template-rows -->
+            <h3>grid-template-rows <span class="tag">row sizes</span></h3>
+            <p>Controls the height of each row.</p>
+            <div class="demo-grid demo-rows">
+                <div class="demo-cell">Row 1 (40px)</div>
+                <div class="demo-cell">Row 2 (80px)</div>
+                <div class="demo-cell">Row 3 (40px)</div>
             </div>
 
+            <!-- span -->
+            <h3>span <span class="tag">stretch across lines</span></h3>
+            <p>Makes an item span across multiple columns or rows.</p>
+            <div class="demo-grid demo-span">
+                <div class="demo-cell">1</div>
+                <div class="demo-cell wide">span 2</div>
+                <div class="demo-cell">4</div>
+                <div class="demo-cell">5</div>
+            </div>
+            <div class="code-block">
+                <code>.wide {
+    grid-column: span 2;
+}</code>
+            </div>
 
+            <!-- grid-column -->
+            <h3>grid-column <span class="tag">horizontal placement</span></h3>
+            <p>Places an item between specific column lines.</p>
+            <div class="demo-grid demo-grid-column">
+                <div class="demo-cell">1</div>
+                <div class="demo-cell placed">2–3</div>
+                <div class="demo-cell">4</div>
+            </div>
+            <div class="code-block">
+                <code>.placed {
+    grid-column: 2 / 4;
+}</code>
+            </div>
+
+            <!-- grid-row -->
+            <h3>grid-row <span class="tag">vertical placement</span></h3>
+            <p>Controls which row lines an item starts and ends on.</p>
+            <div class="demo-grid demo-grid-row">
+                <div class="demo-cell tall">Row 1–2</div>
+                <div class="demo-cell">Row 1</div>
+                <div class="demo-cell">Row 2</div>
+            </div>
+            <div class="code-block">
+                <code>.tall {
+    grid-row: 1 / 3;
+}</code>
+            </div>
+
+            <!-- grid lines -->
+            <h3>grid lines <span class="tag">line numbers</span></h3>
+            <p>Invisible lines between columns/rows used with <code>grid-column</code> and <code>grid-row</code>.</p>
+            <div class="note">
+                Example: <code>grid-column: 2 / 4;</code> uses column line 2 as the start and 4 as the end.
+            </div>
+
+            <!-- grid-template-areas -->
+            <h3>grid-template-areas <span class="tag">named layout</span></h3>
+            <p>Use names to “draw” the layout in text.</p>
+            <div class="code-block">
+                <code>.layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "head head head"
+        "nav  main aside"
+        "foot foot foot";
+}</code>
+            </div>
+
+            <!-- grid-auto-rows -->
+            <h3>grid-auto-rows <span class="tag">implicit rows</span></h3>
+            <p>Sets the height for rows that are created automatically.</p>
+            <div class="demo-grid demo-auto-rows">
+                <div class="demo-cell">40px row</div>
+                <div class="demo-cell taller">taller content</div>
+                <div class="demo-cell">40px row</div>
+            </div>
+            <div class="code-block">
+                <code>.demo-auto-rows {
+    grid-auto-rows: 40px;
+}</code>
+            </div>
+
+            <!-- auto-fit -->
+            <h3>auto-fit <span class="tag">responsive columns</span></h3>
+            <p>Automatically fits as many columns as possible in a row.</p>
+            <div class="demo-grid demo-autofit">
+                <div class="demo-cell">Box</div>
+                <div class="demo-cell">Box</div>
+                <div class="demo-cell">Box</div>
+                <div class="demo-cell">Box</div>
+            </div>
+            <div class="code-block">
+                <code>.demo-autofit {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+}</code>
+            </div>
+
+            <!-- grid-auto-flow -->
+            <h3>grid-auto-flow <span class="tag">placement direction</span></h3>
+            <p>Controls how items are placed: by rows or by columns.</p>
+            <p><strong>Row flow (default):</strong></p>
+            <div class="demo-grid demo-flow-row">
+                <div class="demo-cell">1</div>
+                <div class="demo-cell">2</div>
+                <div class="demo-cell">3</div>
+                <div class="demo-cell">4</div>
+            </div>
+            <p><strong>Column flow:</strong></p>
+            <div class="demo-grid demo-flow-column">
+                <div class="demo-cell">1</div>
+                <div class="demo-cell">2</div>
+                <div class="demo-cell">3</div>
+                <div class="demo-cell">4</div>
+            </div>
+
+            <!-- dense -->
+            <h3>dense <span class="tag">fill gaps</span></h3>
+            <p>Tries to back-fill holes in the grid with smaller items.</p>
+            <div class="demo-grid demo-flow-dense">
+                <div class="demo-cell span2">span 2</div>
+                <div class="demo-cell">A</div>
+                <div class="demo-cell">B</div>
+                <div class="demo-cell">C</div>
+            </div>
+            <div class="code-block">
+                <code>.demo-flow-dense {
+    grid-auto-flow: row dense;
+}</code>
+            </div>
+
+            <!-- repeat() -->
+            <h3>repeat() <span class="tag">shortcut</span></h3>
+            <p>Saves typing when many rows/columns are the same.</p>
+            <div class="demo-grid demo-repeat">
+                <div class="demo-cell">1</div>
+                <div class="demo-cell">2</div>
+                <div class="demo-cell">3</div>
+                <div class="demo-cell">4</div>
+                <div class="demo-cell">5</div>
+            </div>
+
+            <!-- minmax() -->
+            <h3>minmax() <span class="tag">min &amp; max size</span></h3>
+            <p>Defines a flexible track with minimum and maximum size.</p>
+            <div class="demo-grid demo-minmax">
+                <div class="demo-cell">min 120px, grows</div>
+                <div class="demo-cell">1fr</div>
+            </div>
+            <div class="code-block">
+                <code>.demo-minmax {
+    grid-template-columns: minmax(120px, 2fr) 1fr;
+}</code>
+            </div>
+
+            <!-- fr unit -->
+            <h3>The fr unit <span class="tag">fractions</span></h3>
+            <p>Shares the remaining space between tracks.</p>
+            <div class="demo-grid demo-fr">
+                <div class="demo-cell">1fr</div>
+                <div class="demo-cell">2fr</div>
+                <div class="demo-cell">3fr</div>
+            </div>
+
+            <!-- gap -->
+            <h3>gap <span class="tag">space between items</span></h3>
+            <p>Adds space between grid items without using margin.</p>
+            <div class="demo-grid demo-gap">
+                <div class="demo-cell">A</div>
+                <div class="demo-cell">B</div>
+                <div class="demo-cell">C</div>
+            </div>
+            <div class="code-block">
+                <code>.demo-gap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}</code>
+            </div>
+        </section>
     </main>
 </body>
 </html>
