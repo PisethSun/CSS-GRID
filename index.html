@@ -107,43 +107,56 @@
             margin: 1.5rem 0;
         }
 
+        /* Grid-template-areas demo */
         .grid-container {
-    display: grid;
-    grid-template: repeat(5, 1fr) / repeat(12, 1fr);
-    grid-template-areas:
-        "head head head head head head head head head head head head"
-        "nav nav main main main main main main main aside aside aside"
-        "nav nav main main main main main main main aside aside aside"
-        "nav nav main main main main main main main aside aside aside"
-        "foot foot foot foot foot foot foot foot foot foot foot foot";
-}
+            display: grid;
+            grid-template: repeat(5, 1fr) / repeat(12, 1fr);
+            grid-template-areas:
+                "head head head head head head head head head head head head"
+                "nav  nav  main main main main main main main aside aside aside"
+                "nav  nav  main main main main main main main aside aside aside"
+                "nav  nav  main main main main main main main aside aside aside"
+                "foot foot foot foot foot foot foot foot foot foot foot foot";
+            margin-top: 1rem;
+            height: 320px;          /* gives it a nice tall layout */
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
 
-/* Apply colors to each grid-area */
-.head {
-    grid-area: head;
-    background-color: #f5ecb3;   /* Light yellow */
-}
+        /* Apply colors to each grid-area */
+        .head {
+            grid-area: head;
+            background-color: #f5ecb3;   /* Light yellow */
+        }
 
-.nav {
-    grid-area: nav;
-    background-color: #f4a5a5;   /* Light red/pink */
-}
+        .nav {
+            grid-area: nav;
+            background-color: #f4a5a5;   /* Light red/pink */
+        }
 
-.main {
-    grid-area: main;
-    background-color: #a6f3a6;   /* Light green */
-}
+        .main {
+            grid-area: main;
+            background-color: #a6f3a6;   /* Light green */
+        }
 
-.aside {
-    grid-area: aside;
-    background-color: #d8d8d8;   /* Light gray */
-}
+        .aside {
+            grid-area: aside;
+            background-color: #d8d8d8;   /* Light gray */
+        }
 
-.foot {
-    grid-area: foot;
-    background-color: #ffe447;   /* Bright yellow */
-}
+        .foot {
+            grid-area: foot;
+            background-color: #ffe447;   /* Bright yellow */
+        }
 
+        /* Center text inside the grid areas (like the Scrimba example) */
+        .grid-container > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -335,21 +348,65 @@ main {
                 You can then place items like: <code>grid-column: span 3;</code> (3 columns wide),  
                 <code>grid-column: span 6;</code> (half the grid), etc.
             </div>
-
-   
-
         </section>
-   <section>
-            <h2>5.Grind-template-area: </h2>
-                 <div class="grid-container">
-    <div class="head">Header</div>
-    <div class="nav">Nav</div>
-    <div class="main">Main</div>
-    <div class="aside">Aside</div>
-    <div class="foot">Footer</div>
-</div>
 
- </section>
+        <!-- GRID-TEMPLATE-AREAS DEMO -->
+        <section>
+            <h2>6. <code>grid-template-areas</code></h2>
+
+            <p>This layout uses a 12-column grid with named areas: <strong>head</strong>, <strong>nav</strong>, <strong>main</strong>, <strong>aside</strong>, and <strong>foot</strong>.</p>
+
+            <div class="grid-container">
+                <div class="head">Header</div>
+                <div class="nav">Nav</div>
+                <div class="main">Main</div>
+                <div class="aside">Aside</div>
+                <div class="foot">Footer</div>
+            </div>
+        </section>
+
+        <!-- EXTRA NOTES ON GRID-TEMPLATE-AREAS -->
+        <section>
+            <h2>7. Using <code>grid-template-areas</code> with Cards</h2>
+
+            <div class="code-block">
+                <div class="note">
+                    1. Assign each card a <code>grid-area</code> name:<br><br>
+                    <code>.technology {
+    grid-area: tech;
+}
+
+.environment {
+    grid-area: envi;
+}
+                        
+.nasa {
+    grid-area: nasa;
+}
+
+.physics {
+    grid-area: phys; 
+}
+
+.health {
+    grid-area: heal;
+}</code>
+                    <br><br>
+                    2. Use <code>grid-template-areas</code> to define the layout (mobile example):<br><br>
+                    <code>main {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "tech"
+        "envi"
+        "nasa"
+        "phys"
+        "heal";
+}</code>
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 </html>
